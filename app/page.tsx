@@ -45,7 +45,7 @@ export default function HomePage() {
             backgroundSize: "80px 100%",
           }}
         />
-        <Container className="relative grid gap-12 py-24 md:py-32 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <Container className="relative py-24 md:py-32">
           <div>
             <p className="eyebrow text-gold">{HOME_HERO.eyebrow}</p>
             <div className="hairline my-7" />
@@ -64,29 +64,6 @@ export default function HomePage() {
             <p className="mt-10 border-t border-ivory/15 pt-6 text-sm text-fog/60">
               {HOME_HERO.trustLine}
             </p>
-          </div>
-
-          {/*
-            IMAGE SLOT — architectural / civic photography.
-            Recommended: /public/images/portney-associates-home-hero.jpg
-            Dimensions: 1200 × 1500 (4:5 portrait), AVIF/WebP, ~<200KB.
-            Documentary tone: government architecture, civic institution, or
-            emergency operations environment. No text baked into the image.
-          */}
-          <div
-            className="relative hidden aspect-[4/5] w-full border border-ivory/15 bg-navy-midnight lg:block"
-            role="img"
-            aria-label="Architectural photography of a civic institution"
-          >
-            <div className="absolute inset-0 grid place-items-center text-center text-ivory/30">
-              <div>
-                <Icon name="landmark" className="mx-auto h-10 w-10" />
-                <p className="mt-3 px-6 text-xs uppercase tracking-[0.18em]">
-                  Civic / architectural image
-                  <br />1200 × 1500
-                </p>
-              </div>
-            </div>
           </div>
         </Container>
       </section>
