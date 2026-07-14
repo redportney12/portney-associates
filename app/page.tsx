@@ -43,7 +43,7 @@ export default function HomePage() {
             backgroundSize: "80px 100%",
           }}
         />
-        <Container className="relative py-24 md:py-32">
+        <Container className="relative grid gap-12 py-24 md:py-32 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
           <div>
             <p className="eyebrow text-gold">{HOME_HERO.eyebrow}</p>
             <div className="hairline my-7" />
@@ -62,6 +62,16 @@ export default function HomePage() {
             <p className="mt-10 border-t border-ivory/15 pt-6 text-sm text-fog/60">
               {HOME_HERO.trustLine}
             </p>
+          </div>
+
+          {/* Brand mark panel. Upload the logo to
+              public/images/portney-associates-logo.png in the repo. */}
+          <div className="relative hidden aspect-[4/5] w-full overflow-hidden border border-gold/25 bg-ivory lg:block">
+            <img
+              src="/images/portney-associates-logo.png"
+              alt="Portney & Associates LLC"
+              className="h-full w-full object-contain p-12"
+            />
           </div>
         </Container>
       </section>
@@ -176,6 +186,4 @@ export default function HomePage() {
       <CtaPanel {...HOME_FINAL_CTA} button={HOME_FINAL_CTA.button} />
     </>
   );
-}
-
 }
