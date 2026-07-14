@@ -8,7 +8,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { CapabilityCard } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
 import { Checklist } from "@/components/ui/checklist";
-import { TestimonialCard } from "@/components/ui/testimonial";
 import { CtaPanel } from "@/components/ui/cta-panel";
 import { Process } from "@/components/sections/process";
 import {
@@ -17,7 +16,6 @@ import {
   DIFFERENTIATORS,
   SECTORS,
   OUTCOME_CATEGORIES,
-  TESTIMONIALS,
   HOME_FINAL_CTA,
   SITE,
 } from "@/content/site";
@@ -210,22 +208,6 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="bg-ivory">
-        <Container className="py-20 md:py-28">
-          <SectionHeading
-            eyebrow="Client Perspectives"
-            title="Placeholders for verified client testimonials"
-            intro="These placeholders are shown for layout only and will be replaced with verified client statements before launch."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {TESTIMONIALS.map((t, i) => (
-              <TestimonialCard key={i} item={t} />
-            ))}
           </div>
         </Container>
       </section>
