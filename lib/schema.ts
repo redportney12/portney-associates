@@ -7,9 +7,9 @@ const PERSON_ID = `${siteUrl()}/jonathan-portney#jonathan-portney`;
 
 /** Organization schema for the homepage. Only verified sameAs URLs are included. */
 export function organizationSchema() {
-  const sameAs = [SITE.contact.linkedinCompany].filter(
+  const sameAs = ([SITE.contact.linkedinCompany] as string[]).filter(
     (u) => u && u !== "#",
-  ) as string[];
+  );
 
   return {
     "@context": "https://schema.org",
@@ -34,9 +34,9 @@ export function organizationSchema() {
 
 /** ProfilePage + Person schema for /jonathan-portney. */
 export function profilePageSchema() {
-  const sameAs = [SITE.contact.linkedinPersonal].filter(
+  const sameAs = ([SITE.contact.linkedinPersonal] as string[]).filter(
     (u) => u && u !== "#",
-  ) as string[];
+  );
 
   return {
     "@context": "https://schema.org",
