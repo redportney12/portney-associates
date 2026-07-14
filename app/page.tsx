@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { pageMetadata } from "@/lib/metadata";
 import { organizationSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/ui/json-ld";
@@ -46,7 +45,7 @@ export default function HomePage() {
             backgroundSize: "80px 100%",
           }}
         />
-        <Container className="relative grid gap-12 py-24 md:py-32 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <Container className="relative py-24 md:py-32">
           <div>
             <p className="eyebrow text-gold">{HOME_HERO.eyebrow}</p>
             <div className="hairline my-7" />
@@ -65,29 +64,6 @@ export default function HomePage() {
             <p className="mt-10 border-t border-ivory/15 pt-6 text-sm text-fog/60">
               {HOME_HERO.trustLine}
             </p>
-          </div>
-
-          {/*
-            IMAGE SLOT — architectural / civic photography.
-            Recommended: /public/images/portney-associates-home-hero.jpg
-            Dimensions: 1200 × 1500 (4:5 portrait), AVIF/WebP, ~<200KB.
-            Documentary tone: government architecture, civic institution, or
-            emergency operations environment. No text baked into the image.
-          */}
-          <div
-            className="relative hidden aspect-[4/5] w-full border border-ivory/15 bg-navy-midnight lg:block"
-            role="img"
-            aria-label="Architectural photography of a civic institution"
-          >
-            <div className="absolute inset-0 grid place-items-center text-center text-ivory/30">
-              <div>
-                <Icon name="landmark" className="mx-auto h-10 w-10" />
-                <p className="mt-3 px-6 text-xs uppercase tracking-[0.18em]">
-                  Civic / architectural image
-                  <br />1200 × 1500
-                </p>
-              </div>
-            </div>
           </div>
         </Container>
       </section>
@@ -178,30 +154,19 @@ export default function HomePage() {
       {/* FOUNDER */}
       <section className="bg-navy text-ivory">
         <Container className="py-20 md:py-28">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
-            <div>
-              <p className="eyebrow text-gold">The Founder</p>
-              <div className="hairline my-6" />
-              <h2 className="text-h2 text-ivory">Led by Jonathan Portney</h2>
-              <p className="mt-6 max-w-measure text-lg leading-relaxed text-fog/85">
-                {SITE.name} was founded by Jonathan &ldquo;JP&rdquo; Portney to provide government
-                agencies, healthcare organizations, public health departments, and executive leaders
-                with direct access to experienced, practical advisory support.
-              </p>
-              <div className="mt-8">
-                <ButtonLink href="/jonathan-portney" variant="ghost">
-                  Learn More About Jonathan Portney
-                </ButtonLink>
-              </div>
-            </div>
-            <div className="relative mx-auto hidden aspect-[5/6] w-full max-w-sm overflow-hidden border border-ivory/15 bg-navy-midnight lg:block">
-              <Image
-                src="/images/jonathan-portney-founder-portney-associates.jpg"
-                alt="Portrait of Jonathan Portney, founder and principal"
-                fill
-                sizes="24rem"
-                className="object-cover object-top"
-              />
+          <div>
+            <p className="eyebrow text-gold">The Founder</p>
+            <div className="hairline my-6" />
+            <h2 className="text-h2 text-ivory">Led by Jonathan Portney</h2>
+            <p className="mt-6 max-w-measure text-lg leading-relaxed text-fog/85">
+              {SITE.name} was founded by Jonathan &ldquo;JP&rdquo; Portney to provide government
+              agencies, healthcare organizations, public health departments, and executive leaders
+              with direct access to experienced, practical advisory support.
+            </p>
+            <div className="mt-8">
+              <ButtonLink href="/jonathan-portney" variant="ghost">
+                Learn More About Jonathan Portney
+              </ButtonLink>
             </div>
           </div>
         </Container>
