@@ -60,17 +60,12 @@ export default function JonathanPortneyPage() {
               Alt: "Jonathan Portney, founder and principal of Portney & Associates LLC"
               Dimensions: 1000 × 1200 (5:6). Documentary, editorial tone.
             */}
-            <div
-              className="relative mx-auto aspect-[5/6] w-full max-w-sm border border-ivory/15 bg-navy-midnight"
-              role="img"
-              aria-label={FOUNDER.imageAlt}
-            >
-              <div className="absolute inset-0 grid place-items-center text-center text-ivory/30">
-                <p className="px-6 text-xs uppercase tracking-[0.18em]">
-                  Founder portrait
-                  <br />1000 × 1200
-                </p>
-              </div>
+            <div className="relative mx-auto aspect-[5/6] w-full max-w-sm overflow-hidden border border-gold/25 bg-navy-midnight">
+              <img
+                src="/images/jonathan-portney-founder-portney-associates.jpg"
+                alt={FOUNDER.imageAlt}
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </Container>
