@@ -1,219 +1,108 @@
-import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/metadata";
-import { organizationSchema } from "@/lib/schema";
-import { JsonLd } from "@/components/ui/json-ld";
-import { Container } from "@/components/ui/container";
-import { ButtonLink } from "@/components/ui/button";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { CapabilityCard } from "@/components/ui/card";
-import { Icon } from "@/components/ui/icon";
-import { Checklist } from "@/components/ui/checklist";
-import { CtaPanel } from "@/components/ui/cta-panel";
-import { Process } from "@/components/sections/process";
-import {
-  HOME_HERO,
-  CAPABILITIES,
-  DIFFERENTIATORS,
-  SECTORS,
-  OUTCOME_CATEGORIES,
-  HOME_FINAL_CTA,
-  SITE,
-} from "@/content/site";
+import { absoluteUrl, siteUrl } from "@/lib/utils";
+import { SITE } from "@/content/site";
+import { FOUNDER } from "@/content/founder";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Portney & Associates LLC | Government, Public Health and Healthcare Consulting",
-  description:
-    "Portney & Associates LLC, founded by Jonathan Portney, provides executive advisory and strategic consulting for government, public health, healthcare, and emergency management leaders.",
-  path: "/",
-  ogImage: "/social/portney-associates-home.png",
-});
+const ORG_ID = `${siteUrl()}/#organization`;
+const PERSON_ID = `${siteUrl()}/jonathan-portney#jonathan-portney`;
 
-export default function HomePage() {
-  return (
-    <>
-      <JsonLd data={organizationSchema()} />
+/** Organization schema for the homepage. Only verified sameAs URLs are included. */
+export function organizationSchema() {
+  const sameAs = [SITE.contact.linkedinCompany as string].filter(
+    (u) => u && u !== "#",
+  ) as string[];
 
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-navy text-ivory">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage: "linear-gradient(to right, #F7F6F2 1px, transparent 1px)",
-            backgroundSize: "80px 100%",
-          }}
-        />
-        <Container className="relative grid gap-12 py-24 md:py-32 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-          <div>
-            <p className="eyebrow text-gold">{HOME_HERO.eyebrow}</p>
-            <div className="hairline my-7" />
-            <h1 className="text-display text-ivory">{HOME_HERO.headline}</h1>
-            <p className="mt-7 max-w-measure text-lg leading-relaxed text-fog/85">
-              {HOME_HERO.supporting}
-            </p>
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <ButtonLink href={HOME_HERO.primaryCta.href} variant="ghost">
-                {HOME_HERO.primaryCta.label}
-              </ButtonLink>
-              <ButtonLink href={HOME_HERO.secondaryCta.href} variant="ghost">
-                {HOME_HERO.secondaryCta.label}
-              </ButtonLink>
-            </div>
-            <p className="mt-10 border-t border-ivory/15 pt-6 text-sm text-fog/60">
-              {HOME_HERO.trustLine}
-            </p>
-          </div>
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: SITE.name,
+    alternateName: SITE.shortName,
+    url: siteUrl(),
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl("/logo/portney-associates-logo-transparent.png"),
+    },
+    founder: {
+      "@type": "Person",
+      "@id": PERSON_ID,
+      name: SITE.founder,
+    },
+    description: SITE.footerDescription,
+    ...(sameAs.length ? { sameAs } : {}),
+  };
+}
 
-          {/*
-            IMAGE SLOT — architectural / civic photography.
-            Recommended: /public/images/portney-associates-home-hero.jpg
-            Dimensions: 1200 × 1500 (4:5 portrait), AVIF/WebP, ~<200KB.
-            Documentary tone: government architecture, civic institution, or
-            emergency operations environment. No text baked into the image.
-          */}
-          <div
-            className="relative hidden aspect-[4/5] w-full border border-ivory/15 bg-navy-midnight lg:block"
-            role="img"
-            aria-label="Architectural photography of a civic institution"
-          >
-            <div className="absolute inset-0 grid place-items-center text-center text-ivory/30">
-              <div>
-                <Icon name="landmark" className="mx-auto h-10 w-10" />
-                <p className="mt-3 px-6 text-xs uppercase tracking-[0.18em]">
-                  Civic / architectural image
-                  <br />1200 × 1500
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+/** ProfilePage + Person schema for /jonathan-portney. */
+export function profilePageSchema() {
+  const sameAs = [SITE.contact.linkedinPersonal as string].filter(
+    (u) => u && u !== "#",
+  ) as string[];
 
-      {/* CREDIBILITY */}
-      <section className="bg-ivory">
-        <Container className="py-20 md:py-28">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <div>
-              <div className="hairline mb-6" />
-              <h2 className="text-h2">
-                Experienced guidance where leadership, public service, and complex operations
-                intersect.
-              </h2>
-            </div>
-            <p className="self-center text-lg leading-relaxed text-slate-brand">
-              Portney &amp; Associates works with leaders navigating consequential decisions,
-              organizational complexity, cross-agency coordination, workforce challenges, public
-              health priorities, and operational risk. Every engagement is grounded in disciplined
-              analysis, practical judgment, and an understanding of how public institutions operate.
-            </p>
-          </div>
-        </Container>
-      </section>
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${siteUrl()}/jonathan-portney#profilepage`,
+    url: absoluteUrl("/jonathan-portney"),
+    name: FOUNDER.seoTitle,
+    mainEntity: {
+      "@type": "Person",
+      "@id": PERSON_ID,
+      name: FOUNDER.name,
+      alternateName: ["JP Portney", "J. Portney", "J Portney"],
+      givenName: "Jonathan",
+      familyName: "Portney",
+      jobTitle: "Founder and Principal",
+      url: absoluteUrl("/jonathan-portney"),
+      image: {
+        "@type": "ImageObject",
+        url: absoluteUrl(FOUNDER.imageFile),
+      },
+      worksFor: {
+        "@type": "Organization",
+        "@id": ORG_ID,
+        name: SITE.name,
+        url: siteUrl(),
+      },
+      knowsAbout: [
+        "Executive Advisory",
+        "Government Leadership",
+        "Public Health Strategy",
+        "Healthcare Strategy",
+        "Emergency Management",
+        "Strategic Planning",
+        "Leadership Facilitation",
+        "Workforce Development",
+      ],
+      ...(sameAs.length ? { sameAs } : {}),
+    },
+  };
+}
 
-      {/* CAPABILITIES */}
-      <section className="bg-white">
-        <Container className="py-20 md:py-28">
-          <SectionHeading eyebrow="Core Capabilities" title="Where the firm concentrates its work" />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {CAPABILITIES.map((c) => (
-              <CapabilityCard key={c.title} {...c} />
-            ))}
-          </div>
-        </Container>
-      </section>
+export interface Crumb {
+  name: string;
+  path: string;
+}
 
-      {/* WHY PORTNEY */}
-      <section className="bg-ivory">
-        <Container className="py-20 md:py-28">
-          <SectionHeading eyebrow="Why Portney & Associates" title="What clients can expect" />
-          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
-            {DIFFERENTIATORS.map((d) => (
-              <div key={d.title} className="flex gap-5">
-                <Icon name={d.icon} className="h-8 w-8 flex-none text-gold-dark" />
-                <div>
-                  <h3 className="text-h4 font-serif text-navy">{d.title}</h3>
-                  <p className="mt-2 leading-relaxed text-slate-brand">{d.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+/** BreadcrumbList schema. */
+export function breadcrumbSchema(crumbs: Crumb[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.name,
+      item: absoluteUrl(c.path),
+    })),
+  };
+}
 
-      {/* ENGAGEMENT MODEL */}
-      <Process />
-
-      {/* SECTORS */}
-      <section className="bg-ivory">
-        <Container className="py-20 md:py-28">
-          <SectionHeading eyebrow="Sectors Served" title="Organizations responsible for essential public services" />
-          <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SECTORS.map((s) => (
-              <li key={s.title} className="flex items-center gap-4 border border-fog bg-white p-6">
-                <Icon name={s.icon} className="h-6 w-6 flex-none text-gold-dark" />
-                <span className="font-serif text-lg text-navy">{s.title}</span>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      {/* OUTCOMES */}
-      <section className="bg-white">
-        <Container className="py-20 md:py-28">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <SectionHeading eyebrow="Outcomes" title="What engagements are designed to produce" />
-            <div className="self-center">
-              <Checklist items={OUTCOME_CATEGORIES} columns={2} />
-              {/* TODO: When verified engagement metrics exist, add a substantiated
-                  results block here. Do not publish unverifiable numbers. */}
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* FOUNDER */}
-      <section className="bg-navy text-ivory">
-        <Container className="py-20 md:py-28">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
-            <div>
-              <p className="eyebrow text-gold">The Founder</p>
-              <div className="hairline my-6" />
-              <h2 className="text-h2 text-ivory">Led by Jonathan Portney</h2>
-              <p className="mt-6 max-w-measure text-lg leading-relaxed text-fog/85">
-                {SITE.name} was founded by Jonathan &ldquo;JP&rdquo; Portney to provide government
-                agencies, healthcare organizations, public health departments, and executive leaders
-                with direct access to experienced, practical advisory support.
-              </p>
-              <div className="mt-8">
-                <ButtonLink href="/jonathan-portney" variant="ghost">
-                  Learn More About Jonathan Portney
-                </ButtonLink>
-              </div>
-            </div>
-            {/*
-              IMAGE SLOT — founder portrait.
-              /public/images/jonathan-portney-founder-portney-associates.jpg
-              Dimensions: 1000 × 1200 (5:6), documentary editorial tone.
-            */}
-            <div
-              className="relative mx-auto hidden aspect-[5/6] w-full max-w-sm border border-ivory/15 bg-navy-midnight lg:block"
-              role="img"
-              aria-label="Portrait of Jonathan Portney, founder and principal"
-            >
-              <div className="absolute inset-0 grid place-items-center text-center text-ivory/30">
-                <p className="px-6 text-xs uppercase tracking-[0.18em]">
-                  Founder portrait
-                  <br />1000 × 1200
-                </p>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* FINAL CTA */}
-      <CtaPanel {...HOME_FINAL_CTA} button={HOME_FINAL_CTA.button} />
-    </>
-  );
+/** Safe JSON-LD serialization guarding against XSS via </script> and line separators. */
+export function jsonLd(data: unknown): string {
+  return JSON.stringify(data)
+    .replace(/</g, "\\u003c")
+    .replace(/>/g, "\\u003e")
+    .replace(/&/g, "\\u0026")
+    .replace(/\u2028/g, "\\u2028")
+    .replace(/\u2029/g, "\\u2029");
 }

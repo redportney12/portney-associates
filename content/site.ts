@@ -3,7 +3,6 @@ import type {
   Differentiator,
   NavLink,
   ProcessStep,
-  Testimonial,
 } from "@/types";
 
 /**
@@ -176,25 +175,6 @@ export const OUTCOME_CATEGORIES: string[] = [
 ];
 // TODO: Add verified engagement metrics here when available (e.g. named outcomes,
 // verifiable results). Do not publish numbers that cannot be substantiated.
-
-// Placeholder testimonials. These are NOT real client statements and must not be
-// presented as such. They are labeled and rendered with a clear placeholder note.
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    // TODO: Replace with a verified client testimonial before launch.
-    quote:
-      "Placeholder for a verified client testimonial describing the clarity, judgment, and practical direction provided during a complex engagement.",
-    attribution: "Client name and title to be added after verification",
-    verified: false,
-  },
-  {
-    // TODO: Replace with a verified client testimonial before launch.
-    quote:
-      "Placeholder for a verified client testimonial describing improved coordination and leadership alignment on a high-stakes public initiative.",
-    attribution: "Client name and title to be added after verification",
-    verified: false,
-  },
-];
 
 export const HOME_FINAL_CTA = {
   headline: "Bring clarity to your next critical initiative.",

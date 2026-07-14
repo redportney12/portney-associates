@@ -77,62 +77,35 @@ export const LEADERSHIP_APPROACH: { title: string; description: string }[] = [
   },
 ];
 
-// Editable timeline. Summaries are kept general and do not include confidential,
-// litigation, personnel, or sensitive employer detail.
+// Editable timeline. Every entry is a placeholder until confirmed.
+// Do not include confidential, litigation, personnel, or sensitive employer detail.
 export const PROFESSIONAL_TIMELINE: TimelineRole[] = [
   {
-    organization: "California Department of Public Health",
-    position: "Regional Program Coordinator, Los Angeles & Southern California",
-    dates: "2024–Present",
+    organization: "Organization name to be confirmed",
+    position: "Leadership role to be confirmed",
+    dates: "Year–Year",
     location: "California",
     scope:
-      "Supports regional public health coordination, improving communication and collaboration across jurisdictions and providing technical assistance to local health partners on statewide priorities.",
-    verified: true,
+      "Placeholder for a verified summary of scope and responsibilities in this role.",
+    verified: false,
   },
   {
-    organization: "Portney & Associates LLC",
-    position: "Founder and Principal",
-    dates: "2024–Present",
-    location: "United States",
-    scope:
-      "Leads a cross-sector advisory practice spanning public health, healthcare, policy, technology, and community engagement, delivering consulting, program strategy, and leadership support.",
-    verified: true,
-  },
-  {
-    organization: "County of Lake",
-    position: "Public Health & Health Services Director / Medical & Health Operational Area Coordinator",
-    dates: "2021–2023",
+    organization: "Organization name to be confirmed",
+    position: "Leadership role to be confirmed",
+    dates: "Year–Year",
     location: "California",
     scope:
-      "Directed a county public health and health services department and served as the Medical & Health Operational Area Coordinator (MHOAC), overseeing programs across public health, environmental health, and emergency preparedness.",
-    verified: true,
+      "Placeholder for a verified summary of scope and responsibilities in this role.",
+    verified: false,
   },
   {
-    organization: "Daly City Youth Health Center",
-    position: "Executive Director",
-    dates: "2020–2022",
+    organization: "Organization name to be confirmed",
+    position: "Leadership role to be confirmed",
+    dates: "Year–Year",
     location: "California",
     scope:
-      "Led a school-linked health center providing primary care, behavioral health, and youth development services, overseeing clinical, behavioral health, and community outreach teams.",
-    verified: true,
-  },
-  {
-    organization: "Urban Services YMCA",
-    position: "Director, Community Health Ambassador Program",
-    dates: "2018–2020",
-    location: "San Francisco Bay Area, California",
-    scope:
-      "Directed a community health worker program focused on resident-driven health initiatives, growing the team and strengthening health and wellness programming in partnership with local communities.",
-    verified: true,
-  },
-  {
-    organization: "Adventist Health",
-    position: "Hospital Administrator, International Program",
-    dates: "2017–2018",
-    location: "International",
-    scope:
-      "Supported administration of a rural hospital and community resilience programming, developing health education services and building partnerships with local and community organizations.",
-    verified: true,
+      "Placeholder for a verified summary of scope and responsibilities in this role.",
+    verified: false,
   },
 ];
 

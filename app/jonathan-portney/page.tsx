@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { pageMetadata } from "@/lib/metadata";
 import { profilePageSchema, breadcrumbSchema } from "@/lib/schema";
@@ -55,15 +54,23 @@ export default function JonathanPortneyPage() {
                 {FOUNDER.intro}
               </p>
             </div>
-            <div className="relative mx-auto aspect-[5/6] w-full max-w-sm overflow-hidden border border-ivory/15 bg-navy-midnight">
-              <Image
-                src={FOUNDER.imageFile || "/placeholder.svg"}
-                alt={FOUNDER.imageAlt}
-                fill
-                sizes="(min-width: 1024px) 24rem, 100vw"
-                className="object-cover object-top"
-                priority
-              />
+            {/*
+              FOUNDER PORTRAIT
+              File: /public/images/jonathan-portney-founder-portney-associates.jpg
+              Alt: "Jonathan Portney, founder and principal of Portney & Associates LLC"
+              Dimensions: 1000 × 1200 (5:6). Documentary, editorial tone.
+            */}
+            <div
+              className="relative mx-auto aspect-[5/6] w-full max-w-sm border border-ivory/15 bg-navy-midnight"
+              role="img"
+              aria-label={FOUNDER.imageAlt}
+            >
+              <div className="absolute inset-0 grid place-items-center text-center text-ivory/30">
+                <p className="px-6 text-xs uppercase tracking-[0.18em]">
+                  Founder portrait
+                  <br />1000 × 1200
+                </p>
+              </div>
             </div>
           </div>
         </Container>
@@ -114,7 +121,7 @@ export default function JonathanPortneyPage() {
           <SectionHeading
             eyebrow="Professional Experience"
             title="Career timeline"
-            intro="A selection of leadership roles across public health, healthcare, government, and community organizations."
+            intro="An editable timeline. Entries below are placeholders and will be confirmed before publication."
           />
           <div className="mt-14 max-w-3xl">
             <Timeline roles={PROFESSIONAL_TIMELINE} />
