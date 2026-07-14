@@ -1,4 +1,121 @@
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/metadata";
+import { organizationSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/ui/json-ld";
+import { Container } from "@/components/ui/container";
+import { ButtonLink } from "@/components/ui/button";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { CapabilityCard } from "@/components/ui/card";
+import { Icon } from "@/components/ui/icon";
+import { Checklist } from "@/components/ui/checklist";
+import { CtaPanel } from "@/components/ui/cta-panel";
+import { Process } from "@/components/sections/process";
+import {
+  HOME_HERO,
+  CAPABILITIES,
   DIFFERENTIATORS,
+  SECTORS,
+  OUTCOME_CATEGORIES,
+  HOME_FINAL_CTA,
+  SITE,
+} from "@/content/site";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Portney & Associates LLC | Government, Public Health and Healthcare Consulting",
+  description:
+    "Portney & Associates LLC, founded by Jonathan Portney, provides executive advisory and strategic consulting for government, public health, healthcare, and emergency management leaders.",
+  path: "/",
+  ogImage: "/social/portney-associates-home.png",
+});
+
+export default function HomePage() {
+  return (
+    <>
+      <JsonLd data={organizationSchema()} />
+
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-navy text-ivory">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage: "linear-gradient(to right, #F7F6F2 1px, transparent 1px)",
+            backgroundSize: "80px 100%",
+          }}
+        />
+        <Container className="relative py-24 md:py-32">
+          <div>
+            <p className="eyebrow text-gold">{HOME_HERO.eyebrow}</p>
+            <div className="hairline my-7" />
+            <h1 className="text-display text-ivory">{HOME_HERO.headline}</h1>
+            <p className="mt-7 max-w-measure text-lg leading-relaxed text-fog/85">
+              {HOME_HERO.supporting}
+            </p>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+              <ButtonLink href={HOME_HERO.primaryCta.href} variant="ghost">
+                {HOME_HERO.primaryCta.label}
+              </ButtonLink>
+              <ButtonLink href={HOME_HERO.secondaryCta.href} variant="ghost">
+                {HOME_HERO.secondaryCta.label}
+              </ButtonLink>
+            </div>
+            <p className="mt-10 border-t border-ivory/15 pt-6 text-sm text-fog/60">
+              {HOME_HERO.trustLine}
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* CREDIBILITY */}
+      <section className="bg-ivory">
+        <Container className="py-20 md:py-28">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <div>
+              <div className="hairline mb-6" />
+              <h2 className="text-h2">
+                Experienced guidance where leadership, public service, and complex operations
+                intersect.
+              </h2>
+            </div>
+            <p className="self-center text-lg leading-relaxed text-slate-brand">
+              Portney &amp; Associates works with leaders navigating consequential decisions,
+              organizational complexity, cross-agency coordination, workforce challenges, public
+              health priorities, and operational risk. Every engagement is grounded in disciplined
+              analysis, practical judgment, and an understanding of how public institutions operate.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* CAPABILITIES */}
+      <section className="bg-white">
+        <Container className="py-20 md:py-28">
+          <SectionHeading eyebrow="Core Capabilities" title="Where the firm concentrates its work" />
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {CAPABILITIES.map((c) => (
+              <CapabilityCard key={c.title} {...c} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* WHY PORTNEY */}
+      <section className="bg-ivory">
+        <Container className="py-20 md:py-28">
+          <SectionHeading eyebrow="Why Portney & Associates" title="What clients can expect" />
+          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
+            {DIFFERENTIATORS.map((d) => (
+              <div key={d.title} className="flex gap-5">
+                <Icon name={d.icon} className="h-8 w-8 flex-none text-gold-dark" />
+                <div>
+                  <h3 className="text-h4 font-serif text-navy">{d.title}</h3>
+                  <p className="mt-2 leading-relaxed text-slate-brand">{d.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       {/* ENGAGEMENT MODEL */}
       <Process />
@@ -35,7 +152,7 @@
       {/* FOUNDER */}
       <section className="bg-navy text-ivory">
         <Container className="py-20 md:py-28">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
+          <div className="max-w-3xl">
             <div>
               <p className="eyebrow text-gold">The Founder</p>
               <div className="hairline my-6" />
@@ -49,23 +166,6 @@
                 <ButtonLink href="/jonathan-portney" variant="ghost">
                   Learn More About Jonathan Portney
                 </ButtonLink>
-              </div>
-            </div>
-            {/*
-              IMAGE SLOT — founder portrait.
-              /public/images/jonathan-portney-founder-portney-associates.jpg
-              Dimensions: 1000 × 1200 (5:6), documentary editorial tone.
-            */}
-            <div
-              className="relative mx-auto hidden aspect-[5/6] w-full max-w-sm border border-ivory/15 bg-navy-midnight lg:block"
-              role="img"
-              aria-label="Portrait of Jonathan Portney, founder and principal"
-            >
-              <div className="absolute inset-0 grid place-items-center text-center text-ivory/30">
-                <p className="px-6 text-xs uppercase tracking-[0.18em]">
-                  Founder portrait
-                  <br />1000 × 1200
-                </p>
               </div>
             </div>
           </div>
