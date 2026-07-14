@@ -1,119 +1,178 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
-import { breadcrumbSchema } from "@/lib/schema";
+import { organizationSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/ui/json-ld";
-import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
+import { ButtonLink } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { CapabilityCard } from "@/components/ui/card";
+import { Icon } from "@/components/ui/icon";
 import { Checklist } from "@/components/ui/checklist";
 import { CtaPanel } from "@/components/ui/cta-panel";
+import { Process } from "@/components/sections/process";
 import {
-  SERVICES_HERO,
-  SERVICES,
-  ENGAGEMENT_FORMATS,
-  PROCUREMENT,
-} from "@/content/services";
-import { HOME_FINAL_CTA } from "@/content/site";
+  HOME_HERO,
+  CAPABILITIES,
+  DIFFERENTIATORS,
+  SECTORS,
+  OUTCOME_CATEGORIES,
+  HOME_FINAL_CTA,
+  SITE,
+} from "@/content/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Government and Public Health Consulting Services",
+  title: "Portney & Associates LLC | Government, Public Health and Healthcare Consulting",
   description:
-    "Explore executive advisory, public health strategy, healthcare consulting, emergency preparedness, strategic planning, and leadership facilitation services.",
-  path: "/services",
-  ogImage: "/social/portney-associates-services.png",
+    "Portney & Associates LLC, founded by Jonathan Portney, provides executive advisory and strategic consulting for government, public health, healthcare, and emergency management leaders.",
+  path: "/",
+  ogImage: "/social/portney-associates-home.png",
 });
 
-const crumbs = [
-  { name: "Home", path: "/" },
-  { name: "Services", path: "/services" },
-];
-
-export default function ServicesPage() {
+export default function HomePage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema(crumbs)} />
-      <PageHero
-        eyebrow={SERVICES_HERO.eyebrow}
-        headline={SERVICES_HERO.headline}
-        supporting={SERVICES_HERO.supporting}
-        crumbs={crumbs}
-      />
+      <JsonLd data={organizationSchema()} />
 
-      {/* SERVICES */}
-      <div className="bg-white">
-        {SERVICES.map((service, i) => (
-          <section
-            key={service.slug}
-            id={service.slug}
-            className={`scroll-mt-24 ${i % 2 === 1 ? "bg-ivory" : "bg-white"}`}
-          >
-            <Container className="py-16 md:py-20">
-              <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-navy text-ivory">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage: "linear-gradient(to right, #F7F6F2 1px, transparent 1px)",
+            backgroundSize: "80px 100%",
+          }}
+        />
+        <Container className="relative py-24 md:py-32">
+          <div>
+            <p className="eyebrow text-gold">{HOME_HERO.eyebrow}</p>
+            <div className="hairline my-7" />
+            <h1 className="text-display text-ivory">{HOME_HERO.headline}</h1>
+            <p className="mt-7 max-w-measure text-lg leading-relaxed text-fog/85">
+              {HOME_HERO.supporting}
+            </p>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+              <ButtonLink href={HOME_HERO.primaryCta.href} variant="ghost">
+                {HOME_HERO.primaryCta.label}
+              </ButtonLink>
+              <ButtonLink href={HOME_HERO.secondaryCta.href} variant="ghost">
+                {HOME_HERO.secondaryCta.label}
+              </ButtonLink>
+            </div>
+            <p className="mt-10 border-t border-ivory/15 pt-6 text-sm text-fog/60">
+              {HOME_HERO.trustLine}
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* CREDIBILITY */}
+      <section className="bg-ivory">
+        <Container className="py-20 md:py-28">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <div>
+              <div className="hairline mb-6" />
+              <h2 className="text-h2">
+                Experienced guidance where leadership, public service, and complex operations
+                intersect.
+              </h2>
+            </div>
+            <p className="self-center text-lg leading-relaxed text-slate-brand">
+              Portney &amp; Associates works with leaders navigating consequential decisions,
+              organizational complexity, cross-agency coordination, workforce challenges, public
+              health priorities, and operational risk. Every engagement is grounded in disciplined
+              analysis, practical judgment, and an understanding of how public institutions operate.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* CAPABILITIES */}
+      <section className="bg-white">
+        <Container className="py-20 md:py-28">
+          <SectionHeading eyebrow="Core Capabilities" title="Where the firm concentrates its work" />
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {CAPABILITIES.map((c) => (
+              <CapabilityCard key={c.title} {...c} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* WHY PORTNEY */}
+      <section className="bg-ivory">
+        <Container className="py-20 md:py-28">
+          <SectionHeading eyebrow="Why Portney & Associates" title="What clients can expect" />
+          <div className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2">
+            {DIFFERENTIATORS.map((d) => (
+              <div key={d.title} className="flex gap-5">
+                <Icon name={d.icon} className="h-8 w-8 flex-none text-gold-dark" />
                 <div>
-                  <span className="font-serif text-5xl text-gold">{service.number}</span>
-                  <h2 className="mt-4 text-h2">{service.title}</h2>
-                  <p className="mt-5 max-w-measure leading-relaxed text-slate-brand">
-                    {service.overview}
-                  </p>
-                </div>
-                <div className="grid gap-10 sm:grid-cols-2">
-                  <div>
-                    <h3 className="eyebrow text-gold-dark">Possible Deliverables</h3>
-                    <Checklist className="mt-5" items={service.deliverables} />
-                  </div>
-                  <div>
-                    <h3 className="eyebrow text-gold-dark">Expected Outcomes</h3>
-                    <Checklist className="mt-5" items={service.outcomes} />
-                  </div>
+                  <h3 className="text-h4 font-serif text-navy">{d.title}</h3>
+                  <p className="mt-2 leading-relaxed text-slate-brand">{d.description}</p>
                 </div>
               </div>
-            </Container>
-          </section>
-        ))}
-      </div>
-
-      {/* ENGAGEMENT FORMATS */}
-      <section className="bg-navy text-ivory">
-        <Container className="py-20 md:py-24">
-          <div className="max-w-3xl">
-            <p className="eyebrow text-gold">Engagement Formats</p>
-            <div className="hairline my-6" />
-            <h2 className="text-h2 text-ivory">Flexible structures to match the work</h2>
+            ))}
           </div>
-          <ul className="mt-12 grid gap-px overflow-hidden border border-ivory/15 bg-ivory/15 sm:grid-cols-2 lg:grid-cols-3">
-            {ENGAGEMENT_FORMATS.map((f) => (
-              <li key={f} className="bg-navy p-7 font-serif text-lg text-ivory">
-                {f}
+        </Container>
+      </section>
+
+      {/* ENGAGEMENT MODEL */}
+      <Process />
+
+      {/* SECTORS */}
+      <section className="bg-ivory">
+        <Container className="py-20 md:py-28">
+          <SectionHeading eyebrow="Sectors Served" title="Organizations responsible for essential public services" />
+          <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {SECTORS.map((s) => (
+              <li key={s.title} className="flex items-center gap-4 border border-fog bg-white p-6">
+                <Icon name={s.icon} className="h-6 w-6 flex-none text-gold-dark" />
+                <span className="font-serif text-lg text-navy">{s.title}</span>
               </li>
             ))}
           </ul>
         </Container>
       </section>
 
-      {/* PROCUREMENT */}
-      <section className="bg-ivory">
+      {/* OUTCOMES */}
+      <section className="bg-white">
         <Container className="py-20 md:py-28">
-          <SectionHeading eyebrow="Procurement & Contracting" title={PROCUREMENT.headline} intro={PROCUREMENT.copy} />
-          <div className="mt-14 overflow-hidden border border-fog bg-white">
-            <dl className="grid sm:grid-cols-2 lg:grid-cols-3">
-              {PROCUREMENT.items.map((item, idx) => (
-                <div key={item.label} className={`border-fog p-6 ${idx % 3 !== 2 ? "lg:border-r" : ""} ${idx % 2 === 0 ? "sm:border-r lg:border-r" : ""} border-b`}>
-                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-gold-dark">
-                    {item.label}
-                  </dt>
-                  <dd className="mt-2 text-slate-brand">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            <SectionHeading eyebrow="Outcomes" title="What engagements are designed to produce" />
+            <div className="self-center">
+              <Checklist items={OUTCOME_CATEGORIES} columns={2} />
+              {/* TODO: When verified engagement metrics exist, add a substantiated
+                  results block here. Do not publish unverifiable numbers. */}
+            </div>
           </div>
-          <p className="mt-6 text-sm italic text-slate-brand/80">
-            {/* All procurement values are editable placeholders — none are fabricated. */}
-            Registration numbers, certifications, and insurance details will be published once
-            confirmed. A capability statement and W-9 are available on request.
-          </p>
         </Container>
       </section>
 
+      {/* FOUNDER */}
+      <section className="bg-navy text-ivory">
+        <Container className="py-20 md:py-28">
+          <div className="max-w-3xl">
+            <div>
+              <p className="eyebrow text-gold">The Founder</p>
+              <div className="hairline my-6" />
+              <h2 className="text-h2 text-ivory">Led by Jonathan Portney</h2>
+              <p className="mt-6 max-w-measure text-lg leading-relaxed text-fog/85">
+                {SITE.name} was founded by Jonathan &ldquo;JP&rdquo; Portney to provide government
+                agencies, healthcare organizations, public health departments, and executive leaders
+                with direct access to experienced, practical advisory support.
+              </p>
+              <div className="mt-8">
+                <ButtonLink href="/jonathan-portney" variant="ghost">
+                  Learn More About Jonathan Portney
+                </ButtonLink>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* FINAL CTA */}
       <CtaPanel {...HOME_FINAL_CTA} button={HOME_FINAL_CTA.button} />
     </>
   );
