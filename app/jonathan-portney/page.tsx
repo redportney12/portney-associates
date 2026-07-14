@@ -114,7 +114,7 @@ export default function JonathanPortneyPage() {
           <SectionHeading
             eyebrow="Professional Experience"
             title="Career timeline"
-            intro="An editable timeline. Entries below are placeholders and will be confirmed before publication."
+            intro="A selection of leadership roles across public health, healthcare, government, and community organizations."
           />
           <div className="mt-14 max-w-3xl">
             <Timeline roles={PROFESSIONAL_TIMELINE} />

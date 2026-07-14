@@ -24,12 +24,11 @@ export const SITE = {
     "Strategy, leadership, and operational guidance for organizations responsible for public health, healthcare, emergency preparedness, and essential government services.",
   footerDescription:
     "Executive advisory and strategic consulting for public health, healthcare, emergency management, and government leadership.",
-  // TODO: Replace placeholders below with verified business details before launch.
   contact: {
-    email: "info@portney-associates.com", // TODO: confirm professional email
-    phone: "(000) 000-0000", // TODO: confirm business phone
-    linkedinCompany: "#", // TODO: verified LinkedIn company URL
-    linkedinPersonal: "#", // TODO: verified LinkedIn personal URL
+    email: "Redportney12@gmail.com",
+    phone: "(909) 894-8523",
+    linkedinCompany: "#", // TODO: verified LinkedIn company page URL
+    linkedinPersonal: "https://www.linkedin.com/in/jonathanportney/",
     serviceArea:
       "Based in Southern California and available for engagements throughout California and across the United States.",
   },
