@@ -52,7 +52,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={SITE.contact.linkedinCompany}
+                  href={SITE.contact.linkedinPersonal}
                   className="inline-flex items-center gap-2 text-fog/80 hover:text-ivory"
                   target="_blank"
                   rel="noreferrer noopener"

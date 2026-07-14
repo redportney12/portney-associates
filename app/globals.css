@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Brand theme configured in tailwind.config.ts (navy, ivory, fog, charcoal, gold) */
+
 :root {
   --font-serif: Georgia, serif;
   --font-sans: system-ui, sans-serif;

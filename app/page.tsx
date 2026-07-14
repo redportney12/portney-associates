@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { pageMetadata } from "@/lib/metadata";
 import { organizationSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/ui/json-ld";
@@ -193,22 +194,14 @@ export default function HomePage() {
                 </ButtonLink>
               </div>
             </div>
-            {/*
-              IMAGE SLOT — founder portrait.
-              /public/images/jonathan-portney-founder-portney-associates.jpg
-              Dimensions: 1000 × 1200 (5:6), documentary editorial tone.
-            */}
-            <div
-              className="relative mx-auto hidden aspect-[5/6] w-full max-w-sm border border-ivory/15 bg-navy-midnight lg:block"
-              role="img"
-              aria-label="Portrait of Jonathan Portney, founder and principal"
-            >
-              <div className="absolute inset-0 grid place-items-center text-center text-ivory/30">
-                <p className="px-6 text-xs uppercase tracking-[0.18em]">
-                  Founder portrait
-                  <br />1000 × 1200
-                </p>
-              </div>
+            <div className="relative mx-auto hidden aspect-[5/6] w-full max-w-sm overflow-hidden border border-ivory/15 bg-navy-midnight lg:block">
+              <Image
+                src="/images/jonathan-portney-founder-portney-associates.jpg"
+                alt="Portrait of Jonathan Portney, founder and principal"
+                fill
+                sizes="24rem"
+                className="object-cover object-top"
+              />
             </div>
           </div>
         </Container>

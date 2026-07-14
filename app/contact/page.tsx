@@ -49,19 +49,19 @@ export default function ContactPage() {
                 <ul className="mt-5 space-y-4 text-slate-brand">
                   <li className="flex items-center gap-3">
                     <Mail aria-hidden="true" className="h-5 w-5 flex-none text-gold-dark" />
-                    {/* TODO: confirm professional email */}
                     <a href={`mailto:${SITE.contact.email}`} className="link-underline break-all">
                       {SITE.contact.email}
                     </a>
                   </li>
                   <li className="flex items-center gap-3">
                     <Phone aria-hidden="true" className="h-5 w-5 flex-none text-gold-dark" />
-                    {/* TODO: confirm business phone */}
-                    <span>{SITE.contact.phone}</span>
+                    <a href={`tel:${SITE.contact.phone.replace(/[^\d+]/g, "")}`} className="link-underline">
+                      {SITE.contact.phone}
+                    </a>
                   </li>
                   <li className="flex items-center gap-3">
                     <Linkedin aria-hidden="true" className="h-5 w-5 flex-none text-gold-dark" />
-                    <a href={SITE.contact.linkedinCompany} className="link-underline" target="_blank" rel="noreferrer noopener">
+                    <a href={SITE.contact.linkedinPersonal} className="link-underline" target="_blank" rel="noreferrer noopener">
                       LinkedIn
                     </a>
                   </li>
