@@ -7,14 +7,12 @@ import { Container } from "@/components/ui/container";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Checklist } from "@/components/ui/checklist";
-import { Timeline } from "@/components/ui/timeline";
 import { CtaPanel } from "@/components/ui/cta-panel";
 import {
   FOUNDER,
   FOUNDER_PROFILE_PARAGRAPHS,
   AREAS_OF_EXPERIENCE,
   LEADERSHIP_APPROACH,
-  PROFESSIONAL_TIMELINE,
   CREDENTIALS,
   FOUNDER_FOCUS_LINKS,
   FOUNDER_CTA,
@@ -110,22 +108,8 @@ export default function JonathanPortneyPage() {
         </Container>
       </section>
 
-      {/* PROFESSIONAL EXPERIENCE */}
-      <section className="bg-ivory">
-        <Container className="py-20 md:py-28">
-          <SectionHeading
-            eyebrow="Professional Experience"
-            title="Career timeline"
-            intro="An editable timeline. Entries below are placeholders and will be confirmed before publication."
-          />
-          <div className="mt-14 max-w-3xl">
-            <Timeline roles={PROFESSIONAL_TIMELINE} />
-          </div>
-        </Container>
-      </section>
-
       {/* EDUCATION & CREDENTIALS */}
-      <section className="bg-white">
+      <section className="bg-ivory">
         <Container className="py-20 md:py-28">
           <SectionHeading eyebrow="Education & Credentials" title="Credentials" />
           {CREDENTIALS.active ? (
@@ -152,7 +136,7 @@ export default function JonathanPortneyPage() {
       </section>
 
       {/* FOCUS AREAS */}
-      <section className="bg-ivory">
+      <section className="bg-white">
         <Container className="py-20 md:py-24">
           <SectionHeading eyebrow="Focus Areas" title="Related advisory services" />
           <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -160,7 +144,7 @@ export default function JonathanPortneyPage() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="group flex items-center justify-between border border-fog bg-white p-5 transition-colors hover:border-gold/70"
+                  className="group flex items-center justify-between border border-fog bg-ivory p-5 transition-colors hover:border-gold/70"
                 >
                   <span className="font-serif text-lg text-navy">{l.label}</span>
                   <span aria-hidden="true" className="text-gold transition-transform group-hover:translate-x-0.5">→</span>
