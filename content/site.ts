@@ -26,7 +26,7 @@ export const SITE = {
   contact: {
     email: "Redportney12@gmail.com",
     phone: "(909) 894-8523",
-    linkedinCompany: "#", // TODO: verified LinkedIn company page URL
+    linkedinCompany: "https://www.linkedin.com/in/jonathanportney/",
     linkedinPersonal: "https://www.linkedin.com/in/jonathanportney/",
     serviceArea:
       "Based in Southern California and available for engagements throughout California and across the United States.",
@@ -40,7 +40,6 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Jonathan Portney", href: "/jonathan-portney" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const PRIMARY_CTA = { label: "Schedule a Consultation", href: "/contact" };
