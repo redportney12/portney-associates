@@ -64,13 +64,13 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Brand lockup — horizontal navy logo, blends into the hero.
+          {/* Brand plate — logo framed with a gold hairline on the navy hero.
               File: public/images/portney-associates-logo.png */}
           <div className="hidden w-full items-center justify-center lg:flex">
             <img
               src="/images/portney-associates-logo.png"
               alt="Portney & Associates LLC"
-              className="w-full max-w-lg"
+              className="w-full max-w-md border border-gold/40"
             />
           </div>
         </Container>
