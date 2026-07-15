@@ -64,13 +64,13 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Brand mark panel. Upload the logo to
-              public/images/portney-associates-logo.png in the repo. */}
-          <div className="relative hidden aspect-[4/5] w-full overflow-hidden border border-gold/25 bg-ivory lg:block">
+          {/* Brand lockup — horizontal navy logo, blends into the hero.
+              File: public/images/portney-associates-logo.png */}
+          <div className="hidden w-full items-center justify-center lg:flex">
             <img
               src="/images/portney-associates-logo.png"
               alt="Portney & Associates LLC"
-              className="h-full w-full object-contain p-12"
+              className="w-full max-w-lg"
             />
           </div>
         </Container>
